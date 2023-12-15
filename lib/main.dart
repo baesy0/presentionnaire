@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,115 +12,153 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'presentionnaire',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'present with your heart'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        backgroundColor: Colors.transparent, // 투명한 AppBar 배경색
+        elevation: 0, // 그림자 효과 제거
+        title: Text(''), // 타이틀을 비워서 공간 차지하지 않게
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: SingleChildScrollView(
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            Container(
+              color: Colors.white,
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '관념적인 개념을 몸으로 체화하여 익히는 프로그램입니다.\n소마틱스, 정신과 몸의 연결성에 철학적 바탕을 두고,\n분석심리학에 이론적인 배경을 두고 있습니다.',
+                      style: GoogleFonts.notoSans(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w100,
+                      color: Colors.black,  
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    // 추가적인 텍스트 또는 위젯을 여기에 추가할 수 있습니다.
+                  ],
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Container(
+              color: Colors.blueGrey,
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Stack(
+                children: [
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '구성요소',
+                          style: GoogleFonts.notoSans(
+                            fontWeight: FontWeight.w200,
+                            fontSize: 40.0,
+                            letterSpacing: 20,
+                            color: Colors.black,
+                            height: 2.0,
+                          ),
+                        ),
+                        Text(
+                          '아래 요소를 상황과 주제에 맞게 배치합니다.',
+                          style: GoogleFonts.notoSans(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 20.0,
+                            letterSpacing: 1.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 30), // 원하는 간격 조절
+                        Text(
+                          '명상 / 호흡(Pranayama) / 요가\n움직임 (Authentic Movement, Contact Beyond Contact, Contact Improvisation)\n대화 / 글',
+                          style: GoogleFonts.notoSans(
+                          fontWeight: FontWeight.w100,
+                          fontSize: 15.0,
+                          letterSpacing: 1.0,
+                          color: Colors.black,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Stack(
+                children: [
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '주제',
+                          style: GoogleFonts.notoSans(
+                            fontWeight: FontWeight.w200,
+                            fontSize: 40.0,
+                            letterSpacing: 20,
+                            color: Colors.black,
+                            height: 2.0,
+                          ),
+                        ),
+                        Text(
+                          '움직임 워크샵을 통해 다루는 주제입니다.',
+                          style: GoogleFonts.notoSans(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 20.0,
+                            letterSpacing: 1.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 30), // 원하는 간격 조절
+                        Text(
+                          '그라운딩 / 센터링 / 관계 & 연결 / 플로잉\n자기신뢰 / 자기 신뢰에 기반한 타인에 대한 신뢰 / 감정 (분노, 슬픔 ...)',
+                          style: GoogleFonts.notoSans(
+                          fontWeight: FontWeight.w100,
+                          fontSize: 15.0,
+                          letterSpacing: 1.0,
+                          color: Colors.black,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
