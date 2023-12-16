@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               color: Color.fromARGB(255, 226, 184, 248),
               width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: MediaQuery.of(context).size.height,
               child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -188,6 +188,32 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
               ),
             ),
+            ),
+            Container(
+              color: Colors.white,
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height*0.1,
+              child: Stack(
+                children: [
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'COPYRIGHT 2023 BAESEOYOUNG ALL RIGHTS RESERVED',
+                          style: GoogleFonts.notoSans(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 10.0,
+                            letterSpacing: 5,
+                            color: Colors.black,
+                            height: 2.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
