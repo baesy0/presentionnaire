@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     SizedBox(height: 60.0),
                     Text(
-                      'ALL RIGHTS RESERVED',
+                      'COPYRIGHT 2023 BAESEOYOUNG ALL RIGHTS RESERVED',
                       style: GoogleFonts.notoSans(
                       fontSize: 15.0,
                       fontWeight: FontWeight.w300,
