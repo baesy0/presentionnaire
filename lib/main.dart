@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:confetti/confetti.dart';
 import 'dart:html' as html;
+import 'dart:math';
+
 
 
 void main() {
@@ -32,9 +35,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late ConfettiController _confettiController;
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiController = ConfettiController(duration: const Duration(seconds: 3));
+  }
+
+   @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent, // 투명한 AppBar 배경색
@@ -132,6 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Center(
                 child: ElevatedButton(
                   onPressed: () {
+                    _confettiController.play(); // 콘페티 효과 시작
                     final url = 'assets/presentionnaire.pdf';
                     final anchor = html.AnchorElement(href:url)
                       ..setAttribute('download', 'presentionnaire.pdf')
@@ -153,9 +170,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            // confetti widget
+           ConfettiWidget(
+              confettiController: _confettiController,
+              blastDirection: pi / 2, // 콘페티가 아래로 향하게 설정
+              maxBlastForce: 5,  // 콘페티 속도 조절
+              minBlastForce: 2,
+              numberOfParticles: 50, // 콘페티 입자 수
+              gravity: 1,
+            ),
           ],
         ),
       ),
+      
     );
   }
 }
