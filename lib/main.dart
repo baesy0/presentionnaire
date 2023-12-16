@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(color: Colors.white), // 텍스트 색상을 하얀색으로 설정
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.deepPurple, // 버튼 색상
+                    backgroundColor: Colors.deepPurple, // 버튼 색상
                     padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20), // 버튼 패딩
                     textStyle: TextStyle(
                       fontSize: 20,
