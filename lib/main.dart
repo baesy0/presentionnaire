@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'filedownload.dart';
+import 'dart:html' as html;
+// import 'filedownload.dart';
 
 
 void main() {
@@ -132,7 +133,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    downloadAndSaveFile('./assets/', 'presentionnaire.pdf');// 버튼 클릭 시 수행할 작업
+                    final url = 'assets/presentionnaire.pdf';
+                    final anchor = html.AnchorElement(href:url)
+                      ..setAttribute('download', 'presentionnaire.pdf')
+                      ..click();
                   },
                    child: Text(
                     '선물지\n다운받기',
