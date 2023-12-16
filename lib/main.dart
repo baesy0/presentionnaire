@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _confettiController = ConfettiController(duration: const Duration(seconds: 3));
+    _confettiController = ConfettiController(duration: const Duration(milliseconds: 50));
   }
 
    @override
@@ -144,23 +144,28 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               color: Color.fromARGB(255, 226, 184, 248),
               width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: MediaQuery.of(context).size.height,
               child: Center(
-                child: ElevatedButton(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                ElevatedButton(
                   onPressed: () {
                     _confettiController.play(); // 콘페티 효과 시작
+
+                    // 다운로드 코드 추가
                     final url = 'assets/presentionnaire.pdf';
-                    final anchor = html.AnchorElement(href:url)
+                    final anchor = html.AnchorElement(href: url)
                       ..setAttribute('download', 'presentionnaire.pdf')
                       ..click();
                   },
-                   child: Text(
+                  child: Text(
                     '선물지\n다운받기',
                     textAlign: TextAlign.center, // 텍스트 가운데 정렬
                     style: TextStyle(color: Colors.white), // 텍스트 색상을 하얀색으로 설정
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.deepPurple, // 버튼 색상
+                    backgroundColor: Colors.deepPurple, // 버튼 색상
                     padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20), // 버튼 패딩
                     textStyle: TextStyle(
                       fontSize: 20,
@@ -168,21 +173,51 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 20), // Confetti 위젯과 버튼 사이에 간격 추가
+                // ConfettiWidget 추가
+                ConfettiWidget(
+                  confettiController: _confettiController,
+                  blastDirection: 0, // 콘페티가 아래로 향하게 설정
+                  emissionFrequency: 0.8,
+                  numberOfParticles: 10, // 콘페티 입자 수
+                  blastDirectionality: BlastDirectionality.explosive,
+                  maxBlastForce: 20,  // 콘페티 속도 조절
+                  minBlastForce: 10,
+                  gravity: 0.01,
+                ),
+              ],
               ),
             ),
-            // confetti widget
-           ConfettiWidget(
-              confettiController: _confettiController,
-              blastDirection: pi / 2, // 콘페티가 아래로 향하게 설정
-              maxBlastForce: 5,  // 콘페티 속도 조절
-              minBlastForce: 2,
-              numberOfParticles: 50, // 콘페티 입자 수
-              gravity: 1,
+            ),
+            Container(
+              color: Colors.white,
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height*0.1,
+              child: Stack(
+                children: [
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'COPYRIGHT 2023 BAESEOYOUNG ALL RIGHTS RESERVED',
+                          style: GoogleFonts.notoSans(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 10.0,
+                            letterSpacing: 5,
+                            color: Colors.black,
+                            height: 2.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
-      
     );
   }
 }
